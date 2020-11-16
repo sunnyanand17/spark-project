@@ -33,7 +33,7 @@ root
  
 
 ## Results 
-I applied data processing to the small dataset and then extracted features that I thought would help predict the churn of the users. For this I used 3 Machine learning algorithms of Random Forest, SVM and Gradient Boosted trees and saw that Random Forest Classifier did a better job at predicting the model. An attempt to further perform hyperparameter tuning to enhance the performance of the classifier did not provide any further gains in the classifier performance in making the prediction.
+I applied data processing to the small dataset and then extracted features that I thought would help predict the churn of the users. For this I used 4 Machine learning algorithms of LR, Random Forest, SVM and Gradient Boosted trees and saw that Random Forest Classifier did a better job at predicting the model. An attempt to further perform hyperparameter tuning to enhance the performance of the classifier did not provide any further gains in the classifier performance in making the prediction.
 
 
 ## Tools & Software
