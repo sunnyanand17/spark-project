@@ -9,9 +9,31 @@ This project is a part of the Udacity's Data Scientist Nanodegree program analyz
 
 ## Files Description
 Sparkify.ipynb is the main notebook where we do all the preprocessing, feature engineering and modelling. 
+The dataset contains 18 columns and 286500 rows, the log file stored in JSON format. Each row represents user interactions with the service and information of the user’s session. Below is the schema for the data set.
+root
+ |-- artist: string (nullable = true)
+ |-- auth: string (nullable = true)
+ |-- firstName: string (nullable = true)
+ |-- gender: string (nullable = true)
+ |-- itemInSession: long (nullable = true)
+ |-- lastName: string (nullable = true)
+ |-- length: double (nullable = true)
+ |-- level: string (nullable = true)
+ |-- location: string (nullable = true)
+ |-- method: string (nullable = true)
+ |-- page: string (nullable = true)
+ |-- registration: long (nullable = true)
+ |-- sessionId: long (nullable = true)
+ |-- song: string (nullable = true)
+ |-- status: long (nullable = true)
+ |-- ts: long (nullable = true)
+ |-- userAgent: string (nullable = true)
+ |-- userId: string (nullable = true)
+ 
+ 
 
 ## Results 
-I applied data processing to the small dataset and then extracted features that I thought would help predict the churn of the users. For this I used 3 Machine learning algorithms of Random Forest, SVM and Gradient Boosted trees and saw that Random Forest Classifier did a better job at predicting the model. An attempt to further perform hyperparameter tuning to enhance the performance of the classifier did not provide any further gains in the classifier performance in making the prediction.
+I applied data processing to the small dataset and then extracted features that I thought would help predict the churn of the users. For this I used 4 Machine learning algorithms of LR, Random Forest, SVM and Gradient Boosted trees and saw that Random Forest Classifier did a better job at predicting the model. An attempt to further perform hyperparameter tuning to enhance the performance of the classifier did not provide any further gains in the classifier performance in making the prediction.
 
 
 ## Tools & Software
