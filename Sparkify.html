@@ -13143,14 +13143,13 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[55]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import libraries</span>
 <span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="k">import</span> <span class="n">SparkSession</span>
 <span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="k">import</span> <span class="n">isnan</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span><span class="n">udf</span>
 
-<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">,</span> <span class="n">color_codes</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 
 
@@ -13171,6 +13170,8 @@ div#notebook {
 <span class="kn">from</span> <span class="nn">pyspark.ml.tuning</span> <span class="k">import</span> <span class="n">CrossValidator</span><span class="p">,</span> <span class="n">ParamGridBuilder</span>
 <span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="k">import</span> <span class="n">when</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">avg</span><span class="p">,</span> <span class="n">explode</span><span class="p">,</span> <span class="n">concat</span><span class="p">,</span> <span class="n">lit</span><span class="p">,</span> <span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">split</span><span class="p">,</span> <span class="n">udf</span><span class="p">,</span> <span class="n">isnull</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">desc</span><span class="p">,</span><span class="n">isnan</span><span class="p">,</span> <span class="n">udf</span><span class="p">,</span> <span class="n">isnull</span><span class="p">,</span><span class="nb">sum</span>
 <span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="k">import</span> <span class="n">Window</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">,</span> <span class="n">color_codes</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13180,7 +13181,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create a Spark session</span>
@@ -13194,7 +13195,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">spark</span>
@@ -13210,7 +13211,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[3]:</div>
 
 
 
@@ -13222,7 +13223,7 @@ div#notebook {
         <div>
             <p><b>SparkContext</b></p>
 
-            <p><a href="http://8429d069965f:4040">Spark UI</a></p>
+            <p><a href="http://091003d857ea:4040">Spark UI</a></p>
 
             <dl>
               <dt>Version</dt>
@@ -13254,12 +13255,12 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># read the dataset into the dataframe</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="s2">&quot;mini_sparkify_event_data.json&quot;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">persist</span><span class="p">()</span>
+<span class="n">my_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="s2">&quot;mini_sparkify_event_data.json&quot;</span><span class="p">)</span>
+<span class="n">my_df</span><span class="o">.</span><span class="n">persist</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -13272,7 +13273,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[5]:</div>
+    <div class="prompt output_prompt">Out[4]:</div>
 
 
 
@@ -13289,10 +13290,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -13345,12 +13346,12 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># find the shape of the dataframe </span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of rows </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">count</span><span class="p">()))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of columns</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#dataframe shape</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rows count </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">my_df</span><span class="o">.</span><span class="n">count</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columns count </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">my_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)))</span>
 </pre></div>
 
     </div>
@@ -13367,8 +13368,8 @@ only showing top 20 rows
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Number of rows 286500
-Number of columns18
+<pre>Rows count 286500
+Columns count 18
 </pre>
 </div>
 </div>
@@ -13379,11 +13380,11 @@ Number of columns18
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># understand the schema of the dataset</span>
-<span class="n">df</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># schema of the given dataset</span>
+<span class="n">my_df</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -13430,11 +13431,11 @@ Number of columns18
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># check for na values</span>
-<span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="n">count</span><span class="p">(</span><span class="n">when</span><span class="p">(</span><span class="n">isnan</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">c</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">])</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Are NA values present</span>
+<span class="n">my_df</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="n">count</span><span class="p">(</span><span class="n">when</span><span class="p">(</span><span class="n">isnan</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">c</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">my_df</span><span class="o">.</span><span class="n">columns</span><span class="p">])</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -13467,11 +13468,11 @@ Number of columns18
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># in order to build a model for churn prediction , the user id and session id should not be nulls, if so drop such rows</span>
-<span class="n">df</span><span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span><span class="s1">&#39;sessionId&#39;</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># drop rows with null userid and sessionid as these are not useful for churn predicition</span>
+<span class="n">my_df</span><span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span><span class="s1">&#39;sessionId&#39;</span><span class="p">])</span>
 </pre></div>
 
     </div>
@@ -13481,12 +13482,12 @@ Number of columns18
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># find the shape of the dataframe </span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of rows </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">count</span><span class="p">()))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of columns</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># after dropping find the shape of the dataframe</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Row count </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">my_df</span><span class="o">.</span><span class="n">count</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Column count</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">my_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)))</span>
 </pre></div>
 
     </div>
@@ -13503,8 +13504,8 @@ Number of columns18
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Number of rows 286500
-Number of columns18
+<pre>Row count 286500
+Column count18
 </pre>
 </div>
 </div>
@@ -13515,13 +13516,13 @@ Number of columns18
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># remove rows where user id string is empty</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;userId&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">df</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># remove rows with empty userid</span>
+<span class="n">my_df</span> <span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">my_df</span><span class="p">[</span><span class="s1">&#39;userId&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">my_df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">my_df</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -13570,7 +13571,7 @@ only showing top 20 rows
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[12]:</div>
+    <div class="prompt output_prompt">Out[11]:</div>
 
 
 
@@ -14587,10 +14588,10 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_df</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -14603,7 +14604,7 @@ only showing top 20 rows
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[13]:</div>
+    <div class="prompt output_prompt">Out[12]:</div>
 
 
 
@@ -14620,12 +14621,12 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># find the shape of the dataframe </span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of rows </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">count</span><span class="p">()))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of columns</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># final shape of dataframe</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Row count </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">my_df</span><span class="o">.</span><span class="n">count</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Column count</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">my_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)))</span>
 </pre></div>
 
     </div>
@@ -14642,8 +14643,8 @@ only showing top 20 rows
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Number of rows 278154
-Number of columns18
+<pre>Row count 278154
+Column count18
 </pre>
 </div>
 </div>
@@ -14671,14 +14672,14 @@ Number of columns18
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># convert the time stamp columns into appropriate data types</span>
 <span class="n">ts_udf</span> <span class="o">=</span> <span class="n">udf</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%m-</span><span class="si">%d</span><span class="s2">-%Y %H:%M:%S&quot;</span><span class="p">))</span>
-<span class="c1">#adding new columns with updated values</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;converted_registration&#39;</span><span class="p">,</span> <span class="n">ts_udf</span><span class="p">(</span><span class="s1">&#39;registration&#39;</span><span class="p">))</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;converted_ts&#39;</span><span class="p">,</span> <span class="n">ts_udf</span><span class="p">(</span><span class="s1">&#39;ts&#39;</span><span class="p">))</span>
+<span class="c1"># create new columns with new timestamps</span>
+<span class="n">my_df</span> <span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;converted_registration&#39;</span><span class="p">,</span> <span class="n">ts_udf</span><span class="p">(</span><span class="s1">&#39;registration&#39;</span><span class="p">))</span>
+<span class="n">my_df</span> <span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;converted_ts&#39;</span><span class="p">,</span> <span class="n">ts_udf</span><span class="p">(</span><span class="s1">&#39;ts&#39;</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -14688,10 +14689,10 @@ Number of columns18
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14725,11 +14726,11 @@ only showing top 1 row
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># find all unique pages</span>
-<span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;page&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dropDuplicates</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># unique page list after dropping duplicates</span>
+<span class="n">my_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;page&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dropDuplicates</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -14780,27 +14781,27 @@ only showing top 1 row
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create a downgrade label  column with page value of 1 or 0</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create column with event of downgrade </span>
 <span class="n">downgrade_label</span>  <span class="o">=</span> <span class="n">udf</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s2">&quot;Submit Downgrade&quot;</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">())</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;downgrade_label&quot;</span><span class="p">,</span> <span class="n">downgrade_label</span><span class="p">(</span><span class="s2">&quot;page&quot;</span><span class="p">))</span>
+<span class="n">my_df</span> <span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;downgrade_label&quot;</span><span class="p">,</span> <span class="n">downgrade_label</span><span class="p">(</span><span class="s2">&quot;page&quot;</span><span class="p">))</span>
 
 <span class="c1"># create column of users who downgraded </span>
-<span class="n">df_window_user</span> <span class="o">=</span> <span class="n">Window</span><span class="o">.</span><span class="n">partitionBy</span><span class="p">(</span><span class="s1">&#39;UserId&#39;</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;user_downgraded&quot;</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="s1">&#39;downgrade_label&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">df_window_user</span><span class="p">))</span>
+<span class="n">my_df_window_user</span> <span class="o">=</span> <span class="n">Window</span><span class="o">.</span><span class="n">partitionBy</span><span class="p">(</span><span class="s1">&#39;UserId&#39;</span><span class="p">)</span>
+<span class="n">my_df</span> <span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;user_downgraded&quot;</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="s1">&#39;downgrade_label&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">my_df_window_user</span><span class="p">))</span>
 
 <span class="c1"># create a churn label column</span>
 <span class="n">churn_label</span> <span class="o">=</span> <span class="n">udf</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;Cancellation Confirmation&#39;</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">())</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;churn_label&quot;</span><span class="p">,</span> <span class="n">churn_label</span><span class="p">(</span><span class="s2">&quot;page&quot;</span><span class="p">))</span>
+<span class="n">my_df</span> <span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;churn_label&quot;</span><span class="p">,</span> <span class="n">churn_label</span><span class="p">(</span><span class="s2">&quot;page&quot;</span><span class="p">))</span>
 
 <span class="c1"># create column for users who churned</span>
 <span class="n">df_churn_window</span> <span class="o">=</span> <span class="n">Window</span><span class="o">.</span><span class="n">partitionBy</span><span class="p">(</span><span class="s1">&#39;UserId&#39;</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;user_churned&quot;</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="s1">&#39;churn_label&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">df_churn_window</span><span class="p">))</span>
+<span class="n">my_df</span> <span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;user_churned&quot;</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="s1">&#39;churn_label&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">df_churn_window</span><span class="p">))</span>
 
-<span class="c1"># show the transformed dataset</span>
-<span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span> <span class="s1">&#39;firstName&#39;</span><span class="p">,</span><span class="s1">&#39;lastName&#39;</span><span class="p">,</span> <span class="s1">&#39;level&#39;</span><span class="p">,</span><span class="s1">&#39;converted_registration&#39;</span><span class="p">,</span><span class="s1">&#39;converted_ts&#39;</span><span class="p">,</span><span class="s1">&#39;user_churned&#39;</span><span class="p">,</span> <span class="s1">&#39;user_downgraded&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dropDuplicates</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;userId&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> 
+<span class="c1"># transformed dataset after all that processing</span>
+<span class="n">my_df</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span> <span class="s1">&#39;firstName&#39;</span><span class="p">,</span><span class="s1">&#39;lastName&#39;</span><span class="p">,</span> <span class="s1">&#39;level&#39;</span><span class="p">,</span><span class="s1">&#39;converted_registration&#39;</span><span class="p">,</span><span class="s1">&#39;converted_ts&#39;</span><span class="p">,</span><span class="s1">&#39;user_churned&#39;</span><span class="p">,</span> <span class="s1">&#39;user_downgraded&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dropDuplicates</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;userId&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> 
 </pre></div>
 
     </div>
@@ -14843,11 +14844,11 @@ only showing top 10 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># analyze the data distribution for churned users based on geneder of users</span>
-<span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span> <span class="s1">&#39;gender&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;user_churned&#39;</span><span class="p">,</span> <span class="s1">&#39;gender&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s2">&quot;user_churned&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># data distribution of users based on geneder of users and if they churned</span>
+<span class="n">my_df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span> <span class="s1">&#39;gender&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;user_churned&#39;</span><span class="p">,</span> <span class="s1">&#39;gender&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s2">&quot;user_churned&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -14883,13 +14884,13 @@ only showing top 10 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[77]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># plot the distribution</span>
-<span class="n">df_ch_pd</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span> <span class="s1">&#39;gender&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;user_churned&#39;</span><span class="p">,</span> <span class="s1">&#39;gender&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s2">&quot;user_churned&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot; count of users who churned based on gender&quot;</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;user_churned&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df_ch_pd</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;gender&#39;</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Set3&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># distribution of users who churned based on gender</span>
+<span class="n">my_df_ch_pd</span> <span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span> <span class="s1">&#39;gender&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;user_churned&#39;</span><span class="p">,</span> <span class="s1">&#39;gender&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s2">&quot;user_churned&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;#users who churned based on gender&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;user_churned&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">my_df_ch_pd</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;gender&#39;</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Set3&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14902,13 +14903,13 @@ only showing top 10 rows
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[77]:</div>
+    <div class="prompt output_prompt">Out[19]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f17427dc080&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f8d422baef0&gt;</pre>
 </div>
 
 </div>
@@ -14921,7 +14922,7 @@ only showing top 10 rows
 
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
+<img src="data:image/png;base64,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kGXbZ9638+JnkjTgzJs3j8GDe99eLyb4Jam35s2bxwknnMC0adPYYIMNmDJlCmeffTZXXHEFd999N3PmzGG//fZj//3358orr+SWW24BYOrUqRx11FHsscceTJs2jeOPP55hw4axySabLFj3k08+yYknnsjLL78MwMknn8yGG27I+PHj2XLLLXnkkUc4/PDD2X777Xv9Pgx+SWrSTTfdxOzZs7nkkkuYNWsWu+++O7fffjuPP/44F198MXPnzuWggw7igx/8IAAvvfQS5513Ho899hhHH300e+yxB9/+9rc58sgjGTNmDJdeeikPPvggAKeddhoTJkxgxx13ZMqUKZx66qn84Ac/AGDkyJEcd9xxffY+DH5JatK0adPYZpttAFh11VVZf/31eeGFF5g8efKCvvqXXnqJmTNnArDVVlsxaNAghg8fznPPPbdgHdtuuy0A2267LddcU/1+/ZQpU5g0aRLnnHMOAHPnzl2w3c75+4rBL0lN2mijjfjNb37DIYccwqxZs5g+fTrDhg1j9OjRfOUrXwFgzpw5DBkyhKlTp/a4jsmTJ7PTTjsxefLkBeM33XRTxo8fz3bbbQfA7NmzF0wbMmRIn74Pg1+SmjR27FhuuukmDjjgANZdd13WXnttxo4dy6xZszj44IMZPHgwyy+/PJMmTepxHRMnTuT444/n/PPPZ6ONNlow/rjjjuOUU07hjDPOYP78+YwZM4YjjjiiJe9jqfjpxY6Ojvm9fR6/d/W8wbt6pCX3+uuvs9xyy/Hss88ybtw4brjhhj6506YVOjo6lu4fYpGkgWDixIk8++yzvPjiixx77LEDNvQXxeCXpLfgrLPOancJvbb0HaokSb1i8EtSYezqKdArr9zY7hIGhJVW2q3dJUhtYYtfkgpji1+SFqOvbwdv5pbqiGDvvffm9NNPB6o/DBszZgxbb7015557bq+2b4tfkgaglVdemYcffphXX30VgNtvv50111yzT9Zt8EvSALXzzjsveMLntddey5577tkn6zX4JWmA+uhHP8p1113Ha6+9Rmay9dZb98l6W9rHHxFfAD4JzAf+AhwKrA1cAqwG3AeMz8zZPa5Ekgq12WabMWPGDK655hp22WWXPltvy1r8EbEO8Hlg+8zcChgCHACcCnw3M0cCs4DDWlWDJC3txo4dy2mnndZn3TzQ+q6eocBKETEU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
 "
 >
 </div>
@@ -14942,13 +14943,13 @@ only showing top 10 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[72]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># check if the free or paid users churned more or less</span>
-<span class="n">level_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;page == &quot;Cancellation Confirmation&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;level&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot; number of users who churned more- free or paid&quot;</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">level_df</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;level&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;level&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Set3&quot;</span><span class="p">);</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># which users paid or less, wether it was for free or paid users</span>
+<span class="n">level_my_df</span> <span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;page == &quot;Cancellation Confirmation&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;level&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot; #users who churned more - free or paid&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">level_my_df</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;level&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;level&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Set3&quot;</span><span class="p">);</span>
 </pre></div>
 
     </div>
@@ -14967,7 +14968,7 @@ only showing top 10 rows
 
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
+<img src="data:image/png;base64,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23bN46qqKq688koOPfTQteaZMmUKgwcPXtPtIyJSDLqcMwU9e/Zk7NixrFy5EoA5c+awdOlSevbsSUVFBUuWLAHCL37pHv4iUmjNpsWfz+WXhdKvXz8WLFhA3759qaqqorS0lLvuuouePXvy/vvvr2nxb7bZZtx8881svfXWRa5YRGKS6m2ZG0smk6nS3TlFmj/dnfN7jfFj65lMJudtmdXVIyISGQW/iEhkFPwiIpFR8IuIREbBLyISGQW/iEhkms11/I19GVhjXEpV0/Dhw+nRowc//vGP1xo/bdo07r//fu65555G36aISE3NJvg3BhdffHGxSxARUfA3RGVlJWeffTb77rsvM2fOZOedd+bGG29k5MiRTJo0ieXLl7P//vszbNgwSkpKGDJkCL169eKYY45h8uTJXHfddZSWlrLXXnsV+6mISETUx99Ac+bMoX///jz55JO0a9eOMWPGcPrpp1NRUcGECRP49ttvmTRp0lrLLF++nN/+9reMGDGCMWPG8PHHHxepehGJkYK/gTp27Ej17ST69OlDJpNh2rRp9OvXj969e/PKK6/w3nvvrbXMBx98QOfOnenatSslJSX06dOnGKWLSKTU1dNAJSUl6wxfc801VFRU0LFjR26//XaWL1++3uVERApFLf4GWrhwIa+//joATz311JrWf2lpKUuWLFnzYyzZdtllFyorK/nwww/XLCciUijNpsWfxuWX+ejWrRvjx4/nqquuomvXrgwYMIAvv/yS3r1706lTJ/bee+91ltl0000ZNmwYgwcPprS0lPLyct59990iVC8iMdJtmRugsrKS8847jwkTJhS7FJFmQbdl/l6at2VOrcVvZl2AB4Htge+AP7r7cDO7GjgHqL6U5Qp3fzqtOkREZG1pdvWsAi5z99fMrD2QMbPnk2m3ufstKW67IDp37qzWvohsdFILfndfBCxKHn9tZrOATmltT0RE8lOQPn4z6wpMBroDlwI/B74CXiV8K/i8ruUzmUzTPxEhIg1WVvZFsUtoMmbO7NAo6yloH381M9scqAAucfevzOxu4FqgKvn/VuDM9a2nKZ7cFZHGpZO732uMzMtkMjnHpxr8ZtaKEPoPuftfANz9o6zp9wLqJBcRKaDU/oDLzEqAkcAsd/991viOWbP9FHg7rRpERGRdabb4DwEGAm+Z2RvJuCuAAWa2H6Gr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
 "
 >
 </div>
@@ -14988,15 +14989,15 @@ only showing top 10 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[71]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># gender distribution for number of songs played per session for churned and normal users</span>
-<span class="n">total_songs_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;page == &quot;NextSong&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;user_churned&#39;</span><span class="p">,</span> <span class="s1">&#39;userId&#39;</span><span class="p">,</span> <span class="s1">&#39;sessionId&#39;</span><span class="p">,</span> <span class="s1">&#39;gender&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>\
+<span class="n">total_songs_my_df</span> <span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;page == &quot;NextSong&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;user_churned&#39;</span><span class="p">,</span> <span class="s1">&#39;userId&#39;</span><span class="p">,</span> <span class="s1">&#39;sessionId&#39;</span><span class="p">,</span> <span class="s1">&#39;gender&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>\
     <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;user_churned&#39;</span><span class="p">,</span> <span class="s1">&#39;userId&#39;</span><span class="p">,</span> <span class="s1">&#39;gender&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;count&#39;</span><span class="p">:</span> <span class="s1">&#39;avg&#39;</span><span class="p">})</span>\
     <span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s1">&#39;avg(count)&#39;</span><span class="p">,</span> <span class="s1">&#39;average_played_songs&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot; average songs played per session by any user based on gender&quot;</span><span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span> <span class="s1">&#39;user_churned&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;average_played_songs&#39;</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;gender&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">total_songs_df</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Set3&quot;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span> <span class="s1">&#39;user_churned&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;average_played_songs&#39;</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;gender&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">total_songs_my_df</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Set3&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -15036,13 +15037,13 @@ only showing top 10 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[73]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># gender distribution for total user engagements per session between normal and churned users</span>
-<span class="n">df_engage</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;user_churned&quot;</span><span class="p">,</span> <span class="s2">&quot;userId&quot;</span><span class="p">,</span> <span class="s2">&quot;sessionId&quot;</span><span class="p">,</span> <span class="s1">&#39;gender&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># distribution for total user engagements per session between normal and churned users</span>
+<span class="n">my_df_engage</span> <span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;user_churned&quot;</span><span class="p">,</span> <span class="s2">&quot;userId&quot;</span><span class="p">,</span> <span class="s2">&quot;sessionId&quot;</span><span class="p">,</span> <span class="s1">&#39;gender&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;gender distribution between total user engagements per session between normal and churned users&quot;</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;user_churned&#39;</span><span class="p">,</span> <span class="n">orient</span> <span class="o">=</span> <span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df_engage</span> <span class="p">,</span><span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;user_churned&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Set3&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;user_churned&#39;</span><span class="p">,</span> <span class="n">orient</span> <span class="o">=</span> <span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">my_df_engage</span> <span class="p">,</span><span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;user_churned&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Set3&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -15055,13 +15056,13 @@ only showing top 10 rows
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[73]:</div>
+    <div class="prompt output_prompt">Out[22]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f174d50eba8&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f8d4086b630&gt;</pre>
 </div>
 
 </div>
@@ -15095,12 +15096,12 @@ only showing top 10 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[74]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get the number of users active by hour </span>
 <span class="n">users_hour</span> <span class="o">=</span> <span class="n">udf</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">)</span><span class="o">.</span><span class="n">hour</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;hour&quot;</span><span class="p">,</span> <span class="n">users_hour</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">ts</span><span class="p">))</span>
+<span class="n">my_df</span> <span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;hour&quot;</span><span class="p">,</span> <span class="n">users_hour</span><span class="p">(</span><span class="n">my_df</span><span class="o">.</span><span class="n">ts</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -15110,10 +15111,10 @@ only showing top 10 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[75]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hour_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;hour&#39;</span><span class="p">,</span><span class="s1">&#39;user_churned&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hour_df</span> <span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;hour&#39;</span><span class="p">,</span><span class="s1">&#39;user_churned&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
 <span class="n">hour_df1</span> <span class="o">=</span> <span class="p">((</span><span class="n">hour_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;hour&#39;</span><span class="p">,</span><span class="s1">&#39;user_churned&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">hour_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;user_churned&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">hour_df1</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hour_df1</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="n">hour_df1</span><span class="p">[</span><span class="s1">&#39;user_churned&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;Active&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;Cancelled&#39;</span><span class="p">},</span><span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
@@ -15127,7 +15128,7 @@ only showing top 10 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[76]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
@@ -15148,7 +15149,7 @@ only showing top 10 rows
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[76]:</div>
+    <div class="prompt output_prompt">Out[25]:</div>
 
 
 
@@ -15202,12 +15203,11 @@ only showing top 10 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[79]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># since we are working in the classroom setup we will be selecting only single features</span>
-<span class="c1"># count of songs per user</span>
-<span class="n">feature1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span><span class="s1">&#39;song&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">groupBy</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">,</span><span class="s1">&#39;number_songs_per_user&#39;</span><span class="p">)</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># number of songs per user</span>
+<span class="n">feature1</span> <span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span><span class="s1">&#39;song&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">groupBy</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">,</span><span class="s1">&#39;number_songs_per_user&#39;</span><span class="p">)</span> 
 </pre></div>
 
     </div>
@@ -15217,7 +15217,7 @@ only showing top 10 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[80]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">feature1</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -15255,11 +15255,11 @@ only showing top 2 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[81]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># count of thumbs up a user gives</span>
-<span class="n">feature2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span><span class="s1">&#39;page&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;page&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Thumbs Up&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupBy</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">])</span> \
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#number of thumbs up a user gives</span>
+<span class="n">feature2</span> <span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span><span class="s1">&#39;page&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">my_df</span><span class="p">[</span><span class="s1">&#39;page&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Thumbs Up&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupBy</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">])</span> \
              <span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">,</span><span class="s1">&#39;number_thumbs_up_per_user&#39;</span><span class="p">)</span>
 </pre></div>
 
@@ -15270,7 +15270,7 @@ only showing top 2 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[82]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">feature2</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -15326,11 +15326,11 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[83]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># count of thumbs dowb a user gives</span>
-<span class="n">feature3</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span><span class="s1">&#39;page&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;page&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Thumbs Down&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupBy</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">])</span> \
+<span class="n">feature3</span> <span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span><span class="s1">&#39;page&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">my_df</span><span class="p">[</span><span class="s1">&#39;page&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Thumbs Down&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupBy</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">])</span> \
              <span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">,</span><span class="s1">&#39;number_thumbs_down_per_user&#39;</span><span class="p">)</span>
 </pre></div>
 
@@ -15341,7 +15341,7 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[84]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">feature3</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -15397,11 +15397,11 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[85]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># total time since the user registered in days</span>
-<span class="n">feature4</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span> <span class="s1">&#39;registration&#39;</span><span class="p">,</span> <span class="s1">&#39;ts&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;total_time&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">ts</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">registration</span><span class="p">))</span>\
+<span class="n">feature4</span> <span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span> <span class="s1">&#39;registration&#39;</span><span class="p">,</span> <span class="s1">&#39;ts&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;total_time&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">my_df</span><span class="o">.</span><span class="n">ts</span> <span class="o">-</span> <span class="n">my_df</span><span class="o">.</span><span class="n">registration</span><span class="p">))</span>\
             <span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s1">&#39;userId&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;total_time&#39;</span> <span class="p">:</span> <span class="s1">&#39;max&#39;</span><span class="p">})</span>\
             <span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s1">&#39;max(total_time)&#39;</span><span class="p">,</span> <span class="s1">&#39;total_time&#39;</span><span class="p">)</span>\
             <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;total_time&#39;</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span><span class="o">/</span><span class="mi">3600</span><span class="o">/</span><span class="mi">24</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;total_time&#39;</span><span class="p">))</span>
@@ -15414,7 +15414,7 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[86]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">feature4</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -15470,11 +15470,11 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[87]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># total hours of music listened</span>
-<span class="n">feature5</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span><span class="s1">&#39;length&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">groupBy</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>\
+<span class="n">feature5</span> <span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span><span class="s1">&#39;length&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">groupBy</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>\
              <span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s1">&#39;sum(length)&#39;</span><span class="p">,</span><span class="s1">&#39;total_songtime_per_user&#39;</span><span class="p">)</span> 
 </pre></div>
 
@@ -15485,7 +15485,7 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[88]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">feature5</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -15541,11 +15541,11 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[89]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># converting the gender of the user from catgorical variable to numerical variable using one-hot encoding</span>
-<span class="n">feature6</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span><span class="s1">&#39;gender&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dropDuplicates</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="s1">&#39;F&#39;</span><span class="p">,</span><span class="s1">&#39;M&#39;</span><span class="p">],[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">],</span> <span class="s1">&#39;gender&#39;</span><span class="p">)</span>\
+<span class="n">feature6</span> <span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span><span class="s1">&#39;gender&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dropDuplicates</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="s1">&#39;F&#39;</span><span class="p">,</span><span class="s1">&#39;M&#39;</span><span class="p">],[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">],</span> <span class="s1">&#39;gender&#39;</span><span class="p">)</span>\
              <span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;gender&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)])</span>
 </pre></div>
 
@@ -15556,7 +15556,7 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[90]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">feature6</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -15612,11 +15612,11 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[91]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># total number of songs played per session</span>
-<span class="n">feature7</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;page == &quot;NextSong&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span> <span class="s1">&#39;sessionId&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;userId&#39;</span><span class="p">)</span>\
+<span class="n">feature7</span> <span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s1">&#39;page == &quot;NextSong&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span> <span class="s1">&#39;sessionId&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;userId&#39;</span><span class="p">)</span>\
           <span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;count&#39;</span> <span class="p">:</span> <span class="s1">&#39;avg&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s1">&#39;avg(count)&#39;</span><span class="p">,</span> <span class="s1">&#39;average_played_songs&#39;</span><span class="p">)</span> 
 </pre></div>
 
@@ -15627,7 +15627,7 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[92]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">feature7</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -15683,11 +15683,11 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[97]:</div>
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Number of songs added to playlist</span>
-<span class="n">feature8</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;userID&#39;</span><span class="p">,</span><span class="s1">&#39;page&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">page</span> <span class="o">==</span> <span class="s1">&#39;Add to Playlist&#39;</span><span class="p">)</span>\
+<span class="n">feature8</span> <span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;userID&#39;</span><span class="p">,</span><span class="s1">&#39;page&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">my_df</span><span class="o">.</span><span class="n">page</span> <span class="o">==</span> <span class="s1">&#39;Add to Playlist&#39;</span><span class="p">)</span>\
            <span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s1">&#39;userID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;page&#39;</span><span class="p">:</span><span class="s1">&#39;count&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s1">&#39;count(page)&#39;</span><span class="p">,</span> <span class="s1">&#39;add_to_playlist&#39;</span><span class="p">)</span>
 </pre></div>
 
@@ -15698,7 +15698,7 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[98]:</div>
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">feature8</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -15754,11 +15754,11 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[95]:</div>
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Total number of artists the user has listened to</span>
-<span class="n">feature9</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">page</span> <span class="o">==</span> <span class="s2">&quot;NextSong&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;userId&quot;</span><span class="p">,</span> <span class="s2">&quot;artist&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dropDuplicates</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;userId&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>\
+<span class="n">feature9</span> <span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">my_df</span><span class="o">.</span><span class="n">page</span> <span class="o">==</span> <span class="s2">&quot;NextSong&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;userId&quot;</span><span class="p">,</span> <span class="s2">&quot;artist&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dropDuplicates</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;userId&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>\
          <span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="s2">&quot;tot_artist_played&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -15769,7 +15769,7 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[96]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">feature9</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -15825,11 +15825,11 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[106]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Total number of friends of the user</span>
-<span class="n">feature10</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span> <span class="s1">&#39;page&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">page</span> <span class="o">==</span> <span class="s1">&#39;Add Friend&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s1">&#39;userId&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="s1">&#39;tot_friends&#39;</span><span class="p">)</span>
+<span class="n">feature10</span> <span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span> <span class="s1">&#39;page&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">my_df</span><span class="o">.</span><span class="n">page</span> <span class="o">==</span> <span class="s1">&#39;Add Friend&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s1">&#39;userId&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="s1">&#39;tot_friends&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -15839,7 +15839,7 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[107]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">feature10</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -15895,11 +15895,11 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[108]:</div>
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># setting the churned column as target</span>
-<span class="n">target</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;user_churned&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">dropDuplicates</span><span class="p">()</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">my_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;userId&#39;</span><span class="p">,</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;user_churned&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">dropDuplicates</span><span class="p">()</span>
 <span class="n">target</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
@@ -15953,7 +15953,7 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[109]:</div>
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Combining all features with the target churn label</span>
@@ -16016,7 +16016,7 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[110]:</div>
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">final_df</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
@@ -16067,10 +16067,10 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[111]:</div>
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Step 1 :  vectorize all of our features</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># vectorize all of our features</span>
 
 <span class="n">inputColumns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;number_songs_per_user&#39;</span><span class="p">,</span> <span class="s1">&#39;number_thumbs_up_per_user&#39;</span><span class="p">,</span> <span class="s1">&#39;number_thumbs_up_per_user&#39;</span><span class="p">,</span> <span class="s1">&#39;total_time&#39;</span><span class="p">,</span> <span class="s1">&#39;total_songtime_per_user&#39;</span><span class="p">,</span> <span class="s1">&#39;gender&#39;</span><span class="p">,</span> <span class="s1">&#39;average_played_songs&#39;</span><span class="p">,</span><span class="s1">&#39;add_to_playlist&#39;</span><span class="p">,</span><span class="s1">&#39;tot_artist_played&#39;</span><span class="p">,</span><span class="s1">&#39;tot_friends&#39;</span><span class="p">]</span>
 <span class="n">assmblr</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">(</span><span class="n">inputCols</span> <span class="o">=</span> <span class="n">inputColumns</span><span class="p">,</span> <span class="n">outputCol</span> <span class="o">=</span> <span class="s2">&quot;VectorizedFeatures&quot;</span><span class="p">)</span>
@@ -16128,10 +16128,10 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[112]:</div>
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Step 2 : Standardizing all input features </span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Standardizing all input features </span>
 <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">(</span><span class="n">inputCol</span> <span class="o">=</span> <span class="s1">&#39;VectorizedFeatures&#39;</span><span class="p">,</span> <span class="n">outputCol</span> <span class="o">=</span> <span class="s2">&quot;features&quot;</span><span class="p">,</span> <span class="n">withStd</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="n">scaler_model</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">final_df</span><span class="p">)</span>
 <span class="n">final_df</span> <span class="o">=</span> <span class="n">scaler_model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">final_df</span><span class="p">)</span>
@@ -16144,7 +16144,7 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[113]:</div>
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">final_df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -16200,7 +16200,7 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[114]:</div>
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># selecting the final dataframe of vectorized feature column and label column</span>
@@ -16214,7 +16214,7 @@ only showing top 20 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[115]:</div>
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">processed_data</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -16252,7 +16252,7 @@ only showing top 2 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[116]:</div>
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">training_data</span><span class="p">,</span> <span class="n">val_data</span> <span class="o">=</span> <span class="n">processed_data</span><span class="o">.</span><span class="n">randomSplit</span><span class="p">([</span><span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">],</span> <span class="n">seed</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
@@ -16266,7 +16266,7 @@ only showing top 2 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[117]:</div>
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">lr</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">maxIter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">regParam</span> <span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
@@ -16282,7 +16282,7 @@ only showing top 2 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[118]:</div>
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># built the cross-validation model for random forest</span>
@@ -16300,13 +16300,13 @@ only showing top 2 rows
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[118]:</div>
+    <div class="prompt output_prompt">Out[56]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[0.7678734722189859]</pre>
+<pre>[0.7536371624582298]</pre>
 </div>
 
 </div>
@@ -16317,7 +16317,7 @@ only showing top 2 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[119]:</div>
+<div class="prompt input_prompt">In&nbsp;[57]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># test the f1 score on the validation set</span>
@@ -16331,7 +16331,7 @@ only showing top 2 rows
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[120]:</div>
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get the stats for the random forest</span>
@@ -16368,7 +16368,7 @@ The accuracy is 0.6618993135011442
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[121]:</div>
+<div class="prompt input_prompt">In&nbsp;[59]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># selecting random forest classifier for the first model to apply to this dataset</span>
@@ -16386,7 +16386,7 @@ The accuracy is 0.6618993135011442
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[122]:</div>
+<div class="prompt input_prompt">In&nbsp;[60]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># built the cross-validation model for random forest</span>
@@ -16404,13 +16404,13 @@ The accuracy is 0.6618993135011442
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[122]:</div>
+    <div class="prompt output_prompt">Out[60]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[0.7645153601346643]</pre>
+<pre>[0.768227017601878]</pre>
 </div>
 
 </div>
@@ -16421,7 +16421,7 @@ The accuracy is 0.6618993135011442
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[123]:</div>
+<div class="prompt input_prompt">In&nbsp;[61]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># test the f1 score on the validation set</span>
@@ -16435,7 +16435,7 @@ The accuracy is 0.6618993135011442
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[124]:</div>
+<div class="prompt input_prompt">In&nbsp;[62]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get the stats for the random forest</span>
@@ -16472,7 +16472,7 @@ The accuracy is 0.8009661835748794
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[125]:</div>
+<div class="prompt input_prompt">In&nbsp;[63]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Building SVM machine learning model now</span>
@@ -16489,7 +16489,7 @@ The accuracy is 0.8009661835748794
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[126]:</div>
+<div class="prompt input_prompt">In&nbsp;[64]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># built the cross-validation model for svm</span>
@@ -16507,13 +16507,13 @@ The accuracy is 0.8009661835748794
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[126]:</div>
+    <div class="prompt output_prompt">Out[64]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[0.6942886737004383]</pre>
+<pre>[0.6937935831453108]</pre>
 </div>
 
 </div>
@@ -16524,7 +16524,7 @@ The accuracy is 0.8009661835748794
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[127]:</div>
+<div class="prompt input_prompt">In&nbsp;[65]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># test the f1 score on the validation set</span>
@@ -16538,7 +16538,7 @@ The accuracy is 0.8009661835748794
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[128]:</div>
+<div class="prompt input_prompt">In&nbsp;[66]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get the stats for the SVM</span>
@@ -16575,7 +16575,7 @@ Accuracy is 0.5707915273132664
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[129]:</div>
+<div class="prompt input_prompt">In&nbsp;[67]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Using GBT classifier now</span>
@@ -16592,7 +16592,7 @@ Accuracy is 0.5707915273132664
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[130]:</div>
+<div class="prompt input_prompt">In&nbsp;[68]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># built the cross-validation model for svm</span>
@@ -16610,13 +16610,13 @@ Accuracy is 0.5707915273132664
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[130]:</div>
+    <div class="prompt output_prompt">Out[68]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[0.7442186710749874]</pre>
+<pre>[0.7429856555037488]</pre>
 </div>
 
 </div>
@@ -16627,7 +16627,7 @@ Accuracy is 0.5707915273132664
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[131]:</div>
+<div class="prompt input_prompt">In&nbsp;[69]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># test the f1 score on the validation set</span>
@@ -16641,7 +16641,7 @@ Accuracy is 0.5707915273132664
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[132]:</div>
+<div class="prompt input_prompt">In&nbsp;[70]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get the stats for the gradient boosting</span>
@@ -16686,7 +16686,7 @@ Accuracy is 0.7391304347826086
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[137]:</div>
+<div class="prompt input_prompt">In&nbsp;[71]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">maxDepth</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -16702,7 +16702,7 @@ Accuracy is 0.7391304347826086
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[138]:</div>
+<div class="prompt input_prompt">In&nbsp;[72]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># built the cross-validation model for random forest</span>
@@ -16720,13 +16720,13 @@ Accuracy is 0.7391304347826086
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[138]:</div>
+    <div class="prompt output_prompt">Out[72]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[0.7626586658140879]</pre>
+<pre>[0.781823531215528]</pre>
 </div>
 
 </div>
@@ -16737,7 +16737,7 @@ Accuracy is 0.7391304347826086
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[139]:</div>
+<div class="prompt input_prompt">In&nbsp;[73]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># test the f1 score on the validation set</span>
@@ -16751,7 +16751,7 @@ Accuracy is 0.7391304347826086
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[140]:</div>
+<div class="prompt input_prompt">In&nbsp;[74]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get the stats for the random forest</span>
@@ -16776,8 +16776,8 @@ Accuracy is 0.7391304347826086
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Random Forest Classifier metrics after hyperparamter tuning are as  below :
-The F-1 Score is 0.782608695652174
-The accuracy is 0.7369108238673456
+The F-1 Score is 0.8260869565217391
+The accuracy is 0.8009661835748794
 </pre>
 </div>
 </div>
